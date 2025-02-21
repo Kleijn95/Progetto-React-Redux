@@ -36,7 +36,9 @@
   
 }
 
-
+.mainPage {
+  margin-bottom: 7rem !important
+}
 
 .mainLinks {
   margin-top: 1.5rem;

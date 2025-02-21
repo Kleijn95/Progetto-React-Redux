@@ -1,24 +1,29 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import MainSection from "./components/MainSection";
 import SideBar from "./components/sidebar";
 import Player from "./components/player";
+import Library from "./components/library";
 
 function App() {
   return (
-    <Container fluid>
-      <Row>
-        <Col md={3} className="sidebar-container">
-          <div className="sidebar-col">
-            <SideBar />
-          </div>
-        </Col>
-        <Col md={9} className="main-col d-flex flex-column">
-          <MainSection />
+    <Router>
+      <Container fluid>
+        <Row>
+          <Col md={3} className="sidebar-container">
+            <div className="sidebar-col">
+              <SideBar />
+            </div>
+          </Col>
+          <Routes>
+            <Route path="/" element={<MainSection />} />
+            <Route path="/library" element={<Library />} />
+          </Routes>
           <Player />
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+    </Router>
   );
 }
 

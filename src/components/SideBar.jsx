@@ -4,16 +4,18 @@ import { BookFill, HouseDoorFill } from "react-bootstrap-icons";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { fetchSongs } from "../redux/actions/songsActions";
-
+import { setSearchQuery } from "../redux/actions/searchActions";
+import { Link } from "react-router-dom";
 const SideBar = () => {
-  const [query, setQuery] = useState(""); // Stato locale per l'input
-  const dispatch = useDispatch(); // Crea il dispatch
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
 
   const handleSearch = (e) => {
-    e.preventDefault(); // Previene il comportamento predefinito del form
+    e.preventDefault();
     if (query.trim() !== "") {
-      dispatch(fetchSongs(query)); // Dispatcha l'azione di fetch con la query
-      setQuery(""); // Reset dell'input
+      dispatch(setSearchQuery(query));
+      dispatch(fetchSongs(query));
+      setQuery("");
     }
   };
 
@@ -24,16 +26,16 @@ const SideBar = () => {
       </a>
       <ListGroup className="w-100">
         <ListGroup.Item className="bg-black border-0">
-          <a className="nav-item nav-link text-secondary d-flex align-items-center" href="#">
+          <Link to="/" className="nav-item nav-link text-secondary d-flex align-items-center">
             <HouseDoorFill className="fs-3" />
             &nbsp; Home
-          </a>
+          </Link>
         </ListGroup.Item>
         <ListGroup.Item className="bg-black border-0">
-          <a className="nav-item nav-link text-secondary d-flex align-items-center" href="#">
+          <Link to="/library" className="nav-item nav-link text-secondary d-flex align-items-center">
             <BookFill className="fs-3" />
             &nbsp; Your Library
-          </a>
+          </Link>
         </ListGroup.Item>
         <ListGroup.Item className="bg-black border-0">
           <form onSubmit={handleSearch}>
@@ -44,7 +46,7 @@ const SideBar = () => {
                 placeholder="Search"
                 aria-label="Search"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)} // Aggiorna il valore dell'input
+                onChange={(e) => setQuery(e.target.value)}
               />
               <Button variant="outline-secondary" type="submit" className="h-100">
                 GO

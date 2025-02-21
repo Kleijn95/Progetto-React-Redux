@@ -5,7 +5,6 @@ const initialState = {
 };
 
 const likeReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case TOGGLE_LIKE:
       const isAlreadyLiked = state.liked.some((song) => song.id === action.payload.id);
