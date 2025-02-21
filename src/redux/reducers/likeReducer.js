@@ -6,7 +6,7 @@ const initialState = {
 
 const likeReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_LIKE:
+    case TOGGLE_LIKE: {
       const isAlreadyLiked = state.liked.some((song) => song.id === action.payload.id);
       return {
         ...state,
@@ -14,6 +14,7 @@ const likeReducer = (state = initialState, action) => {
           ? state.liked.filter((song) => song.id !== action.payload.id)
           : [...state.liked, action.payload],
       };
+    }
     default:
       return state;
   }
