@@ -16,9 +16,18 @@ const Player = () => {
           <Row className="align-items-center">
             <Col xs={6} md={4}>
               {currentSong && (
-                <div className="mt-3 text-center">
-                  <p className="text-white mb-0">{currentSong.title}</p>
-                  <p className="text-white">{currentSong.artist.name}</p>
+                <div className="mt-3 d-flex align-items-center">
+                  <img
+                    src={currentSong.album.cover_medium}
+                    alt={currentSong.title}
+                    className="img-fluid me-3"
+                    style={{ width: "60px", height: "60px", borderRadius: "8px" }}
+                  />
+
+                  <div className="text-center">
+                    <p className="text-white mb-0">{currentSong.title}</p>
+                    <p className="text-white">{currentSong.artist.name}</p>
+                  </div>
                 </div>
               )}
             </Col>
