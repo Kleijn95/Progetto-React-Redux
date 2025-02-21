@@ -1,8 +1,22 @@
 import { ListGroup, Button } from "react-bootstrap";
 import logo from "../assets/logo/logo.png";
 import { BookFill, HouseDoorFill } from "react-bootstrap-icons";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { fetchSongs } from "../redux/actions/songsActions";
 
 const SideBar = () => {
+  const [query, setQuery] = useState(""); // Stato locale per l'input
+  const dispatch = useDispatch(); // Crea il dispatch
+
+  const handleSearch = (e) => {
+    e.preventDefault(); // Previene il comportamento predefinito del form
+    if (query.trim() !== "") {
+      dispatch(fetchSongs(query)); // Dispatcha l'azione di fetch con la query
+      setQuery(""); // Reset dell'input
+    }
+  };
+
   return (
     <nav className="navbar flex-column align-items-start h-100 sidebar-custom bg-black vh-100 px-3">
       <a className="navbar-brand py-3 px-2" href="index.html">
@@ -22,12 +36,21 @@ const SideBar = () => {
           </a>
         </ListGroup.Item>
         <ListGroup.Item className="bg-black border-0">
-          <div className="input-group mt-3">
-            <input type="text" className="form-control" placeholder="Search" aria-label="Search" />
-            <Button variant="outline-secondary" className="h-100">
-              GO
-            </Button>
-          </div>
+          <form onSubmit={handleSearch}>
+            <div className="input-group mt-3">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search"
+                aria-label="Search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)} // Aggiorna il valore dell'input
+              />
+              <Button variant="outline-secondary" type="submit" className="h-100">
+                GO
+              </Button>
+            </div>
+          </form>
         </ListGroup.Item>
       </ListGroup>
       <div className="mt-auto mx-auto text-center pb-3">

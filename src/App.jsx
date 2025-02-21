@@ -6,8 +6,8 @@ import Player from "./components/player";
 
 function App() {
   return (
-    <Container fluid className="h-100">
-      <Row className="h-100">
+    <Container fluid>
+      <Row>
         <Col md={3} className="sidebar-container">
           <div className="sidebar-col">
             <SideBar />

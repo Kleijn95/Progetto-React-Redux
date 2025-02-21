@@ -4,7 +4,6 @@ import MapSection from "./MapSection";
 const MainSection = () => {
   return (
     <Col md={9} className="mainPage ">
-      {/* <Row> */}
       <Col className="d-none d-lg-flex mainLinks col-9 col-lg-11 mb-5">
         <a href="#">TRENDING</a>
         <a href="#">PODCAST</a>
@@ -12,7 +11,7 @@ const MainSection = () => {
         <a href="#">NEW RELEASES</a>
         <a href="#">DISCOVER</a>
       </Col>
-      {/* </Row> */}
+
       <Row>
         <MapSection query="Queen" />
       </Row>

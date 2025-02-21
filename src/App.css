@@ -26,12 +26,17 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  
 }
 
 .main-section {
   overflow-y: auto; 
   flex-grow: 1; 
+  
+  
 }
+
+
 
 .mainLinks {
   margin-top: 1.5rem;
@@ -116,3 +121,4 @@ body {
   color: black;
   border: 1px solid white;
 }
+
